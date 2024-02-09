@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Guild Kevinplayz! Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #000;
+            color: #ffd700;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            text-align: center;
+            padding: 50px;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #000;
+            color: #ffd700;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        #editButton {
+            display: none;
+        }
+
+        #editContent {
+            display: none;
+        }
+
+        #uploadVideo {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Our Guild Kevinplayz!</h1>
+        <p>Welcome!</p>
+        <!-- File input for video recording/uploading -->
+        <input type="file" id="uploadVideo" accept="video/*" onchange="handleVideoUpload()">
+        <video id="introVideo" width="560" height="315" controls>
+            <source src="" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </header>
+
+    <section id="guildMembers">
+        <h2>Guild Members</h2>
+        <ul>
+            <!-- Updated with 13 member slots -->
+            <li>Member 1</li>
+            <li>Member 2</li>
+            <li>Member 3</li>
+            <li>Member 4</li>
+            <li>Member 5</li>
+            <li>Member 6</li>
+            <li>Member 7</li>
+            <li>Member 8</li>
+            <li>Member 9</li>
+            <li>Member 10</li>
+            <li>Member 11</li>
+            <li>Member 12</li>
+            <li>Member 13</li>
+        </ul>
+    </section>
+
+    <section id="requestPromo">
+        <h2>Request Guild Promo</h2>
+        <!-- Add your form code here for users to request guild promotions -->
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <!-- Add your contact information here -->
+    </section>
+
+    <!-- "Edit Content" button and editable content -->
+    <button id="editButton" onclick="enableEditing()">Edit Content</button>
+    <div id="editContent" contenteditable="true">
+        <!-- Editable content goes here -->
+    </div>
+
+    <footer>
+        <!-- Add any additional information or links here -->
+    </footer>
+
+    <script>
+        function enableEditing() {
+            var editContent = document.getElementById('editContent');
+            var currentContent = document.getElementById('guildMembers').innerHTML;
+            editContent.innerHTML = currentContent;
+            document.getElementById('guildMembers').style.display = 'none';
+            document.getElementById('requestPromo').style.display = 'none';
+            document.getElementById('contact').style.display = 'none';
+            document.getElementById('editButton').style.display = 'none';
+            editContent.style.display = 'block';
+        }
+
+        // Function to handle video upload
+        function handleVideoUpload() {
+            var videoInput = document.getElementById('uploadVideo');
+            var videoPlayer = document.getElementById('introVideo');
+            var file = videoInput.files[0];
+
+            if (file) {
+                var videoURL = URL.createObjectURL(file);
+                videoPlayer.src = videoURL;
+                videoPlayer.style.display = 'block';
+            }
+        }
+    </script>
+
+</body>
+
+</html>
